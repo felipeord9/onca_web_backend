@@ -8,16 +8,6 @@ const UserSchema = {
     primaryKey: true,
     autoIncrement: true
   },
-  rowId: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    field: 'row_id',
-    unique: true
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -33,9 +23,9 @@ const UserSchema = {
     field: 'recovery_token'
   },
   role: {
-    type: DataTypes.ENUM(["cartera", "admin", "agencias","compras"]),
+    type: DataTypes.ENUM(["coach", "admin", "recepcionista"]),
     allowNull: false,
-    defaultValue: 'agencias'
+    defaultValue: 'coach'
   },
   createdAt: {
     type: DataTypes.DATE,

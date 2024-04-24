@@ -1,4 +1,5 @@
 const UserService = require("../services/userService");
+const EmpleadoService = require("../services/empleadosService");
 
 const findAllUsers = async (req, res, next) => {
   try {
@@ -31,11 +32,23 @@ const createUser = async (req, res, next) => {
   try {
     const { body } = req
     console.log(body)
-    const data = await UserService.create(body)
-    
+    const data = await UserService.create({
+      email:body.email,
+      password:body.password,
+      role:body.role,
+    })
+    const empleado = await EmpleadoService.create({
+      rowId:body.cedula,
+      nombre:body.nombre,
+      genero:body.genero,
+      especialidad:body.especialidad,
+      cronograma:body.cronograma,
+      estado:body.estado,
+      userId:data.id,
+    })
     res.status(201).json({
       message: 'Created',
-      data
+      data,empleado
     })
   } catch (error) {
     console.log(error.message)

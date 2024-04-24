@@ -1,0 +1,18 @@
+const express = require("express");
+const ClienteController = require("../../controllers/clienteController");
+
+const router = express.Router();
+
+/* router.use(
+  passport.authenticate('jwt', { session: false }), 
+  checkRoles('admin')
+)
+ */
+router
+  .get("/", ClienteController.findAllClientes)
+  .get("/:id", ClienteController.findOneCliente)
+  .post('/', ClienteController.createCliente)
+  .patch('/:id', ClienteController.updateCliente)
+  .delete('/:id', ClienteController.deleteCliente);
+
+module.exports = router
