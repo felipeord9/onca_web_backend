@@ -1,5 +1,6 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 const { USER_TABLE } = require("./userModel");
+const { HORARIO_TABLE } = require("./horariosModel");
 
 const EMPLEADOS_TABLE = "Empleados";
 
@@ -28,10 +29,6 @@ const EmpleadoSchema = {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  cronograma: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   estado:{
     type: DataTypes.STRING,
     allowNull:false,
@@ -42,6 +39,17 @@ const EmpleadoSchema = {
     field: "user_id",
     references: {
       model: USER_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "SET NULL",
+  },
+  horarioId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    field: "horario_id",
+    references: {
+      model: HORARIO_TABLE,
       key: "id",
     },
     onUpdate: "CASCADE",
@@ -60,6 +68,10 @@ class Empleado extends Model {
     this.belongsTo(models.User,{
         as:'user',
         foreignKey:'user_id'
+    })
+    this.belongsTo(models.Horario,{
+      as:'horario',
+      foreignKey:'horario_id'
     })
     //
   }

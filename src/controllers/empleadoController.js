@@ -1,4 +1,5 @@
 const EmpleadoService = require('../services/empleadosService')
+const HorarioService = require('../services/horarioService')
 
 const findAllEmpleados = async(req,res,next)=>{
     try{
@@ -14,10 +15,10 @@ const findAllEmpleados = async(req,res,next)=>{
     }
 }
 
-const findOneCliente = async (req, res, next) => {
+const findOneEmpleado = async (req, res, next) => {
     try {
       const { params: { id } } = req;
-      const data = await ClienteService.findOne(id);
+      const data = await EmpleadoService.findOne(id);
   
       res.status(200).json({
         message: 'OK',
@@ -28,10 +29,10 @@ const findOneCliente = async (req, res, next) => {
     }
   };
 
-const deleteCliente = async(req,res,next)=>{
+const deleteEmpleado = async(req,res,next)=>{
     try{
         const {params:{id}}=req
-        const data = await ClienteService.remove(id)
+        const data = await EmpleadoService.remove(id)
         res.status(200).json({
             message:'Deleted',
             data
@@ -42,8 +43,7 @@ const deleteCliente = async(req,res,next)=>{
 }
 
 module.exports = {
-    findAllClientes,
-    createCliente,
-    findOneCliente,
-    deleteCliente
+    findAllEmpleados,
+    findOneEmpleado,
+    deleteEmpleado,
 }

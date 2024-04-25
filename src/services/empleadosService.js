@@ -18,6 +18,13 @@ const findOne = async (id) => {
     return Empleado
 }
 
+const update = async (id, changes) => {
+    const Empleado = await findOne(id)
+    const updatedEmpleado = await Empleado.update(changes)
+  
+    return updatedEmpleado
+}
+
 const remove = async(id)=>{
     const Empleado = findOne(id)
     ;(await Empleado).destroy(id)
@@ -27,5 +34,6 @@ module.exports={
     find,
     create,
     findOne,
+    update,
     remove
 }

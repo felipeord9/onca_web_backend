@@ -1,5 +1,6 @@
 const UserService = require("../services/userService");
 const EmpleadoService = require("../services/empleadosService");
+const HorarioService = require('../services/horarioService')
 
 const findAllUsers = async (req, res, next) => {
   try {
@@ -37,14 +38,29 @@ const createUser = async (req, res, next) => {
       password:body.password,
       role:body.role,
     })
+    const horario = await HorarioService.create({
+      lunesDesde:body.lunesDesde,
+      lunesHasta:body.lunesHasta,
+      MartesDesde:body.MartesDesde,
+      MartesHasta:body.MartesHasta,
+      MiercolesDesde:body.MiercolesDesde,
+      MiercolesHasta:body.MiercolesHasta,
+      juevesDesde:body.juevesDesde,
+      juevesHasta:body.juevesHasta,
+      viernesDesde:body.viernesDesde,
+      viernesHasta:body.viernesHasta,
+      sabadoDesde:body.sabadoDesde,
+      sabadoHasta:body.sabadoHasta,
+    })
     const empleado = await EmpleadoService.create({
-      rowId:body.cedula,
+      rowId:body.rowId,
       nombre:body.nombre,
       genero:body.genero,
       especialidad:body.especialidad,
-      cronograma:body.cronograma,
       estado:body.estado,
       userId:data.id,
+      horarioId:horario.id,
+      createdAt:body.createdAt,
     })
     res.status(201).json({
       message: 'Created',
