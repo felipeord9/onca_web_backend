@@ -4,6 +4,7 @@ const MailRoutes = require('./mailRoutes')
 const AuthRoutes = require('./authRoutes')
 const ClienteController = require('./clienteRoutes')
 const SuscripcionController = require('./suscripcionRoutes')
+const EmpleadoController = require('./empleadosRoutes')
 
 function routerApi(app) {
     const router = express.Router()
@@ -15,6 +16,7 @@ function routerApi(app) {
     router.use('/mail', MailRoutes)
     router.use('/clientes',ClienteController)
     router.use('/suscripcion',SuscripcionController)
+    router.use('/empleados',EmpleadoController)
 }
 
 module.exports = routerApi

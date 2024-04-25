@@ -59,10 +59,6 @@ const ClienteSchema = {
     type: DataTypes.TEXT,
     allowNull: true
   },
-  createBy:{
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   createdAt: {
     type: DataTypes.DATE,
     allowNull: false,

@@ -1,7 +1,12 @@
 const { models } = require("../libs/sequelize");
 
 const find=()=>{
-    const Empleados = models.Empleado.findAll()
+    const Empleados = models.Empleado.findAll({
+        include:[
+            "user",
+            "horario"
+        ]
+    })
     return Empleados
 };
 

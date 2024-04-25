@@ -29,6 +29,10 @@ const EmpleadoSchema = {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  telefono:{
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   estado:{
     type: DataTypes.STRING,
     allowNull:false,

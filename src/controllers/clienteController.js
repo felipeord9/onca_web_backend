@@ -51,7 +51,6 @@ const createCliente = async (req, res, next) => {
       centroSalud:body.centroSalud,
       medicamentos:body.medicamentos,
       observaciones:body.observaciones,
-      createBy:body.createBy,
       createdAt:body.createdAt,
     })
     
