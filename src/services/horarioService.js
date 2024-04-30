@@ -12,7 +12,7 @@ const create = async(body)=>{
 }
 
 const findOne = async (id) => {
-    const Horario = await models.Suscripcion.findByPk(id)
+    const Horario = await models.Horario.findByPk(id)
   
     if(!Horario) throw boom.notFound('Horario no encontrado')
   

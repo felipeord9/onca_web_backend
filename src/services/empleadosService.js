@@ -1,7 +1,7 @@
 const { models } = require("../libs/sequelize");
 
-const find=()=>{
-    const Empleados = models.Empleado.findAll({
+const find= async()=>{
+    const Empleados = await models.Empleado.findAll({
         include:[
             "user",
             "horario"

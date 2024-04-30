@@ -7,6 +7,7 @@ async function sendEmails(infoEmail) {
     host: config.smtpHost,
     port: config.smtpPort,
     secure: true,
+    service: 'gmail',
     auth: {
       user: config.smtpEmail,
       pass: config.smtpPassword

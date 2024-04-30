@@ -58,6 +58,7 @@ const createUser = async (req, res, next) => {
       genero:body.genero,
       especialidad:body.especialidad,
       estado:body.estado,
+      telefono:body.telefono,
       userId:data.id,
       horarioId:horario.id,
       createdAt:body.createdAt,

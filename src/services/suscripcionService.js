@@ -1,10 +1,10 @@
 const { models } = require("../libs/sequelize");
 
-const find=()=>{
-    const Suscripciones = models.Suscripcion.findAll({
+const find = async()=>{
+    const Suscripciones = await models.Suscripcion.findAll({
         include:[
             "cliente"
-        ]
+        ],
     })
     return Suscripciones
 };
@@ -27,9 +27,17 @@ const remove = async(id)=>{
     ;(await Suscripcion).destroy(id)
 }
 
+const update = async (id, changes) => {
+    const Suscripcion = await findOne(id)
+    const updatedSuscripcion = await Suscripcion.update(changes)
+  
+    return updatedSuscripcion
+  }
+
 module.exports={
     find,
-    create,
     findOne,
+    create,
+    update,
     remove
 }

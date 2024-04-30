@@ -27,6 +27,10 @@ const SuscripcionSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   }, */
+  diasFaltantes:{
+    type:DataTypes.INTEGER,
+    allowNull:true,
+  },
   tipo: {
     type: DataTypes.STRING,
     allowNull: true,

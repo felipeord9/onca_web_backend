@@ -35,6 +35,7 @@ const createCliente = async (req, res, next) => {
     const suscripcion = await SuscripcionService.create({
       fechaInicio:body.fechaInicio,
       fechaFinaliza:body.fechaFinaliza,
+      diasFaltantes:body.diasFaltantes,
       tipo:body.tipo,
       estado:body.estado,
       valor:body.valor,

@@ -29,6 +29,20 @@ const findOneEmpleado = async (req, res, next) => {
     }
   };
 
+  const updateEmpleado = async (req, res, next) => {
+    try {
+      const { params: { id }, body } = req
+      const data = await EmpleadoService.update(id, body)
+  
+      res.json(200).json({
+        message: 'Updated',
+        data
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
+
 const deleteEmpleado = async(req,res,next)=>{
     try{
         const {params:{id}}=req
@@ -45,5 +59,6 @@ const deleteEmpleado = async(req,res,next)=>{
 module.exports = {
     findAllEmpleados,
     findOneEmpleado,
+    updateEmpleado,
     deleteEmpleado,
 }
