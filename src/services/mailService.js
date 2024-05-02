@@ -8,6 +8,9 @@ async function sendEmails(infoEmail) {
     port: config.smtpPort,
     secure: true,
     service: 'gmail',
+    tls: {
+      rejectUnauthorized: false
+    },
     auth: {
       user: config.smtpEmail,
       pass: config.smtpPassword

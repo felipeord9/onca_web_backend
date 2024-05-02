@@ -20,6 +20,21 @@ const findOne = async (id) => {
   return Cliente
 }
 
+const findByCedula = async (cedula) => {
+  console.log(cedula)
+  const Cliente = await models.Cliente.findOne({
+    where:{
+      rowId:cedula
+    },
+    include:[
+      "suscripcion"
+    ]
+  })
+  if(!Cliente) throw boom.notFound('Cliente no encontrado')
+
+  return Cliente
+}
+
 const create = async(body)=>{
     const newCliente = await models.Cliente.create(body)
     return newCliente  
@@ -41,6 +56,7 @@ const remove = async (id) => {
 module.exports = {
   find,
   findOne,
+  findByCedula,
   create,
   update,
   remove

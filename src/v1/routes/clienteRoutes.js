@@ -11,6 +11,7 @@ const router = express.Router();
 router
   .get("/", ClienteController.findAllClientes)
   .get("/:id", ClienteController.findOneCliente)
+  .get("/cedula/:id", ClienteController.findOneByCedula)
   .post('/', ClienteController.createCliente)
   .patch('/:id', ClienteController.updateCliente)
   .delete('/:id', ClienteController.deleteCliente);

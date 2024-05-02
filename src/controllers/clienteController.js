@@ -28,6 +28,21 @@ const findOneCliente = async (req, res, next) => {
   }
 };
 
+const findOneByCedula = async (req, res, next) => {
+  try {
+    
+    const { params: { id } } = req;
+    const data = await ClienteService.findByCedula(id);
+
+    res.status(200).json({
+      message: 'OK',
+      data,
+    });
+  } catch (error) {
+    next(error)
+  }
+}
+
 const createCliente = async (req, res, next) => {
   try {
     const { body } = req
@@ -96,6 +111,7 @@ const deleteCliente = async (req, res, next) => {
 module.exports = {
   findAllClientes,
   findOneCliente,
+  findOneByCedula,
   createCliente,
   updateCliente,
   deleteCliente
