@@ -14,7 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@digitalpersona/core": "^0.2.6",
     "@digitalpersona/devices": "^0.2.6",
+    "@digitalpersona/services": "^0.2.8",
     "@hapi/boom": "10.0.1",
     "address": "^2.0.1",
     "bcrypt": "^5.1.1",
