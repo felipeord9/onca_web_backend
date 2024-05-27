@@ -32,6 +32,10 @@ const UserSchema = {
     allowNull: false,
     field: 'created_at',
     defaultValue: Sequelize.NOW
+  },
+  state: {
+    type:DataTypes.STRING,
+    allowNull:true,
   }
 };
 

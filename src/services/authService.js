@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const crypto = require('crypto');
+const { models } = require('../libs/sequelize')
 
 const MailService = require('./mailService')
 const UserService = require('./userService')
@@ -231,13 +232,13 @@ const changeRecoveryPassword = async (token, newPassword) => {
 
     if (user.recoveryToken !== token) throw boom.unauthorized()
 
-    const hashedPassword = await bcrypt.hash(newPassword, 10)
+    const hashedPassword = bcrypt.hashSync(newPassword, 10)
 
-    await UserService.update(user.id, {
-      password: hashedPassword,
-      recoveryToken: null
+    const update = await user.update({...user,
+      password: hashedPassword
     })
-    return { message: 'Password changed' }
+    await user.update({...user,recoveryToken:null})
+    return update
   } catch (error) {
     throw boom.unauthorized()
   }

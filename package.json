@@ -40,7 +40,8 @@
     "rimraf": "^5.0.5",
     "sequelize": "6.32.0",
     "sequelize-cli": "6.6.1",
-    "smb2": "^0.2.11"
+    "smb2": "^0.2.11",
+    "uareu-node": "^1.0.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
