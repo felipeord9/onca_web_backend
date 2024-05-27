@@ -23,7 +23,7 @@ const findOne = async (id) => {
 
 const findByEmail = async (email) => {
   const user = await models.User.findOne({
-   where: {email }
+   where: {email:email }
 })
 
   if(!user) throw boom.notFound('Usuario no encontrado')
@@ -42,9 +42,13 @@ const create = async (data) => {
 }
 
 const update = async (id, changes) => {
+  let hash
+  if(changes.password){
+    hash = bcrypt.hashSync(changes.password,10)
+  }
   const user = await findOne(id)
-  const updatedUser = await user.update(changes)
-
+  const updatedUser = await user.update({...changes,password:hash})
+  delete updatedUser.dataValues.password
   return updatedUser
 }
 

@@ -13,6 +13,7 @@ const router = express.Router();
 router
   .get("/", UserController.findAllUsers)
   .get("/:id", UserController.findOneUser)
+  .get("/email/:email", UserController.findUserByEmail)
   .post('/', UserController.createUser)
   .patch('/:id', UserController.updateUser)
   .delete('/:id', UserController.deleteUser);
